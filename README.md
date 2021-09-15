@@ -1,12 +1,20 @@
-# RNN sentiment analysis model deployment using AWS SageMaker
+# RNN sentiment analysis model training and deployment using AWS SageMaker
 
-Using IMDb dataset: http://ai.stanford.edu/~amaas/data/sentiment/
+This repository contains code for training and deployment of a simple LSTM-based neural network using Amazon Sagemaker. We use a simple web app to interact with the deployed model.
+The recurrent neural network is trained to identify the sentiment of a movie review using the [IMDB data set](http://ai.stanford.edu/~amaas/data/sentiment/).
 
-Maas, Andrew L., et al. Learning Word Vectors for Sentiment Analysis. In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies. Association for Computational Linguistics, 2011.
+> Maas, Andrew L., et al. Learning Word Vectors for Sentiment Analysis. In Proceedings of the 49th Annual Meeting of the Association for Computational Linguistics: Human Language Technologies. Association for Computational Linguistics, 2011.
 
-## LSTM model
+## LSTM-based neural network for sentiment analysis
 
-Using a simple LSTM-based neural network for sentiment analysis.
+To test the ML training and deployment workflow using Amazon SageMaker we use a single LSTM layer, see `model-deployment.ipynb`.
+
+The text is preprocessed using:
+
+- `BeautufulSoup` to remove HTML tags
+- `NLTK` to remove stop words and perform stemming
+
+![text](figs/lstm.png)
 
 
 ## Deploying PyTorch model in SageMaker
