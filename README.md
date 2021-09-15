@@ -19,6 +19,18 @@ The text is preprocessed using:
 
 ## Deploying PyTorch model in SageMaker
 
+Deployment steps:
+
+- Upload preprocessed training data to S3
+- Build the training container in SageMaker; use the python script `train/train.py` to communicate with the pytorch model
+- Train the model within the SageMaker training container
+- The trained model artefacts are saved in S3 bucket
+- Build the inference container (with the custom inference code, see next paragraph) for web app deployment 
+- Deploy the model
+- Set up a Lambda function
+- Set up an API Gateway 
+
+
 When deploying a PyTorch model in SageMaker, four functions should be provided for the SageMaker inference container (see `serve/predict.py`):
 
 - `input_fn`: This function receives the raw serialized input that has been sent to the model's endpoint and its job is to de-serialize and make the input available for the inference code.
